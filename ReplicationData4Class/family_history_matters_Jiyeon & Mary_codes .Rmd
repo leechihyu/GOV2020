@@ -1,0 +1,89 @@
+---
+title: "Family History Matters - Jiyeon & Mary"
+output:
+  pdf_document: default
+  html_document: default
+date: "Fall 2024"
+---
+
+# Codes and Figures
+```{r setup, include=FALSE}
+library(knitr)
+
+# Set the root directory for all notebook chunks
+opts_knit$set(root.dir = "/Users/jiyeonlee/GOV 2020 - New/dataverse_files/")
+
+# Optional: Set the working directory as well for non-notebook chunks
+setwd("/Users/jiyeonlee/GOV 2020 - New/dataverse_files/")
+
+#Set default echo = TRUE (meaning the code chunk will be included unless otherwise set false)
+knitr::opts_chunk$set(echo = TRUE)
+
+# LOAD LIBARARIES
+library(tidyverse)
+library(haven)
+library(readr)
+library(dplyr)
+library(broom)
+library(stargazer)
+library(readstata13)
+library(ggplot2)
+library(ggthemes)
+library(grid)
+library(gridExtra)
+library(dotwhisker)
+library(dplyr)
+library(tidyr)
+library(broom)
+library(egg)
+library(factoextra)
+library(foreign)
+library(readr)
+```
+
+
+\textbf{Data Preparation}
+```{r, include=FALSE}
+data <- read_csv("v3_textwremovals_classified2.csv")
+
+# Convert independent variables to factor
+# baseline set for top_label (immigration reason): N/A (those who doesn't know immigration reason and/or those who didn't answer)
+# baseline set for immigrationtreatmen (immigrant generation): "My great-great-grandparents' generation or earlier" (4+ gen)
+# baseline set for family_history_treatment (priming): 0 (those who are not primed)
+data <- data %>%
+  mutate(
+    top_label = factor(data$top_label, levels = c("N/A", "jobs", "insecurity", "slavery", "better")),
+    immigrationtreatmen = factor(data$immigrationtreatmen, levels = c("My great-great-grandparents' generation or earlier", "My great-grandparents' generation", "My grandparents' generation", "My parents' generation", "My generation")),
+    family_history_treatment = factor(data$family_history_treatment, levels = c(0, 1)))
+```
+
+\textbf{Data Analysis}
+```{r, include=FALSE}
+# linear regression model for open immigration policy support
+# column "family_history_treatment" = priming flag
+# column "top_label" = immigration reason
+# column "immigrationtreatmen" = immigrant generation
+policy_model <- lm(immigrationlimitint ~ family_history_treatment + top_label + immigrationtreatmen + family_history_treatment * top_label + family_history_treatment * immigrationtreatmen, data = data)
+summary(policy_model)
+
+# linear regression model for immigrant empathy level 
+empathy_model <- lm(empathybattery ~ family_history_treatment + top_label + immigrationtreatmen + family_history_treatment * top_label + family_history_treatment * immigrationtreatmen, data = data)
+summary(empathy_model)
+```
+
+\textbf{Data Visualization}
+```{r,  results = "asis"}
+stargazer(policy_model, style = "apsr",
+          title="Support for Open Immigration Policy by Immigration Reasons and Immigrant Generations",
+          dep.var.labels=c("Support for Open Immigration Policy (7-point Scale)"),
+          covariate.labels = c("Primed", "Reason - Economic", "Reason - Humanitarian", "Reason - Forced", "Reason - Other","4th Gen", "3rd Gen", "2nd Gen", "1st Gen", "Primed × Economic", "Primed × Humanitarian", "Primed × Forced", "Primed × Other", "Primed × 4th Gen", "Primed × 3rd Gen", "Primed × 2nd Gen","Primed × 1st Gen", "intercept"),
+          keep.stat="n", header = FALSE)
+```
+
+```{r,  results = "asis"}
+stargazer(empathy_model, style = "apsr",
+          title="Empathy toward Immigrants by Immigration Reasons and Immigrant Generations",
+          dep.var.labels=c("Level of Empathy toward Immigrants"),
+          covariate.labels = c("Primed", "Reason - Economic", "Reason - Humanitarian", "Reason - Forced", "Reason - Other","4th Gen", "3rd Gen", "2nd Gen", "1st Gen", "Primed × Economic", "Primed × Humanitarian", "Primed × Forced", "Primed × Other", "Primed × 4th Gen", "Primed × 3rd Gen", "Primed × 2nd Gen","Primed × 1st Gen", "intercept"),
+          keep.stat="n", header = FALSE)
+```
