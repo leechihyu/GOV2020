@@ -29,7 +29,7 @@ The following points are worth noting:
 
    However, with a non-representative sample, the validity of your findings is limited.
 
-2. Based on the previous point, I wonder if you would consider focusing on the priming effect of economic and humanitarian motivations,
+2. Based on the previous point, I wonder **if you would consider focusing on the PRIMING EFFECT of economic and humanitarian motivations**,
    as both are significant in your tables.
    Since your data comes from an experimental survey, it is appropriate for you to discuss the priming effect,
    and you have strong evidence supporting the existence of such effects. These effects vary between different groups.
@@ -39,10 +39,15 @@ The following points are worth noting:
    If possible, you might consider conducting a representative experimental survey or a similar experimental survey that includes the demographic characteristics of
    respondents, allowing you to reweight the responses according to the population.
 
-3. Assuming that the issues mentioned above are not a concern, I would suggest paying attention to the model specification.
+3. Assuming that the issues mentioned above are not a concern, I would suggest paying attention to the **model specification**.
    Currently, you are using a linear model, which may raise some doubts, although I do not think it is a major issue.
    In your model, the dependent variable could potentially take unrealistic values, such as 0 or 8 for policy attitudes, and -1 or 101 for empathy,
    although in fact they cannot.
    If you were to use an ordered logistic regression model, this issue or possible doubt would not arise.
+
+4. Additionally, a possible concern that may arise is whether the distribution of responses for immigration reasons could differ due to the order of the questions,
+   so that the results may be biased. In other words, one's willingness to tell the reason for family immigration may possibly affected by the order of the questions.
+   Based on my preliminary check, there is no difference in the distribution between the treatment and control groups. However, it may be
+   worthwhile to include this check in your appendix or supplementary materials in the future.
 
 PS: Sorry for not having many constructive suggestions
