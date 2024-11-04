@@ -9,13 +9,13 @@ while closer proximity to the immigrant generation within one’s own family fos
 
 First, the replication script functions well. 
 I was able to smoothly replicate the results with the data and script provided by the authors. 
-Second, the draft is well-written, with clear interpretations of the results.
+Second, the draft is well-written, with clear interpretations of the results and a coherent logic of writing.
 
-The following points are worth noting:
+The following points may be worth noting:
 
 1. **To what extent is the conclusion about the effect of different family immigration histories on one’s policy attitudes and empathy valid?**
-   Although the coefficients for economic reasons are significant in both figures,
-   it may be questionable to conclude that citizens whose family immigration history involves economic factors are more likely to oppose open immigration policies.
+   Although the coefficients for economic reasons are significant in both tables,
+   it may be somewhat questionable to infer that citizens whose family immigration history involves economic factors are more likely to oppose open immigration policies in the population level if you want to do so.
    This is because the data used comes from an experimental survey, which does not guarantee representativeness.
    Such a conclusion can be reliably drawn about the respondents in the study, but it may not be directly applicable to the broader population.
 
@@ -27,7 +27,7 @@ The following points are worth noting:
    Personally, I believe there are likely to be varying effects due to different reasons for immigration among the population,
    and I also believe it is very likely that the directions of effects you found are consistent with those in the broader population.
 
-   However, with a non-representative sample, the validity of your findings is limited.
+   However, with a non-representative sample, the validity of the findings will be limited to the sample.
 
 2. Based on the previous point, I wonder **if you would consider focusing on the PRIMING EFFECT of economic and humanitarian motivations**,
    as both are significant in your tables.
@@ -37,7 +37,7 @@ The following points are worth noting:
    especially considering that you are using data from an experiment and that it is difficult to merge external data with your own.
 
    If possible, you might consider conducting a representative experimental survey or a similar experimental survey that includes the demographic characteristics of
-   respondents, allowing you to reweight the responses according to the population.
+   respondents, allowing you to reweight the responses according to the population, although it may be a little hard for this class project.
 
 3. Assuming that the issues mentioned above are not a concern, I would suggest paying attention to the **model specification**.
    Currently, you are using a linear model, which may raise some doubts, although I do not think it is a major issue.
